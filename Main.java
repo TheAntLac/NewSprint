@@ -19,7 +19,7 @@ public class Main {
         GameUI gameUI = new GameUI(board);
         Board[] boardRef = { board };
 
-        // --- Sidebar ---
+        //Sidebar
         JPanel sidebar = new JPanel();
         sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
         sidebar.setBackground(new Color(60, 40, 20));
@@ -61,7 +61,7 @@ public class Main {
         sidebar.add(sep);
         sidebar.add(Box.createVerticalStrut(16));
 
-        // Autoplay section
+        // Autoplay 
         JLabel autoLabel = new JLabel("Autoplay");
         autoLabel.setForeground(new Color(230, 200, 140));
         autoLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
@@ -156,7 +156,7 @@ public class Main {
         sidebar.add(autoplayBtn);
         sidebar.add(Box.createVerticalStrut(8));
 
-        // ----- Record button -----
+        //  Record button
         GameRecorder[] recorderRef = { new GameRecorder() };
 
         JButton recordBtn = new JButton("⏺  Record");
@@ -190,7 +190,7 @@ public class Main {
         sidebar.add(recordBtn);
         sidebar.add(Box.createVerticalStrut(8));
 
-        // ----- Replay button -----
+        // Replay button
         Timer[] replayTimerRef = { null };
 
         JButton replayBtn = new JButton("↩  Replay");
@@ -266,7 +266,7 @@ public class Main {
         sidebar.add(Box.createVerticalGlue());
         sidebar.add(Box.createVerticalStrut(16));
 
-        // Randomize checkbox — sits directly above New Game as an option for it
+        // Randomize checkbox - sits directly above New Game as an option for it
         JCheckBox randomizeCheck = new JCheckBox("Randomize");
         randomizeCheck.setAlignmentX(Component.CENTER_ALIGNMENT);
         randomizeCheck.setForeground(new Color(230, 200, 140));
@@ -309,7 +309,7 @@ public class Main {
         });
         sidebar.add(newGameBtn);
 
-        // --- Frame ---
+        // Fram
         JFrame frame = new JFrame("Peg Solitaire");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
