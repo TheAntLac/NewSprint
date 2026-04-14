@@ -1,18 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-/**
- * Handles recording moves to memory and persisting/loading them from replay.txt.
- *
- * Recording lifecycle:
- *   startRecording(boardType, boardState) → captures the initial board snapshot
- *   recordMove(fromR, fromC, toR, toC)   → appends each legal move
- *   stopAndSave()                         → writes replay.txt, deletes old file first
- *
- * Replay lifecycle:
- *   loadReplay()                          → reads replay.txt, returns a ReplayData
- *   ReplayData holds the board type, initial grid snapshot, and move list
- */
 public class GameRecorder {
 
     public static final String REPLAY_FILE = "replay.txt";
@@ -45,7 +33,7 @@ public class GameRecorder {
     private boolean recording = false;
 
     // -------------------------------------------------------------------------
-    // Recording API
+    // Recording
     // -------------------------------------------------------------------------
 
     /** Begin a new recording. Snapshots the board's current state as the start. */
@@ -72,7 +60,7 @@ public class GameRecorder {
         if (f.exists()) f.delete();
 
         try (PrintWriter pw = new PrintWriter(new FileWriter(REPLAY_FILE))) {
-            // Header line: board type
+            
             pw.println("TYPE=" + recordedType.name());
 
             // Initial grid dimensions then cell values row by row
@@ -104,7 +92,7 @@ public class GameRecorder {
     public boolean isRecording() { return recording; }
 
     // -------------------------------------------------------------------------
-    // Replay API
+    // Replay
     // -------------------------------------------------------------------------
 
     /** Load replay.txt and return a ReplayData, or null if the file doesn't exist / is corrupt. */
