@@ -3,12 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class GameUI extends JPanel implements MouseListener {
-    /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
-    /** Notified whenever the human player makes a legal move. */
+    /** Notified whenever the player makes a legal move. */
     public interface MoveListener {
         void onMove(int fromR, int fromC, int toR, int toC);
     }
@@ -90,7 +88,7 @@ public class GameUI extends JPanel implements MouseListener {
             }
         }
 
-        // Status bar below the canvas area
+        // Status below the canvas area
         g2.setColor(Color.DARK_GRAY);
         g2.setFont(new Font("SansSerif", Font.BOLD, 16));
         String status = "Pegs remaining: " + board.getPegsRemaining();
