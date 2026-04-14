@@ -118,13 +118,6 @@ public class Board {
     private boolean inBounds(int r, int c) {
         return r >= 0 && r < rows && c >= 0 && c < cols && grid[r][c] != -1;
     }
-
-    /**
-     * Randomizes the board by scattering exactly pegCount pegs across all valid
-     * cells, leaving the rest as empty holes. Invalid cells (-1) are untouched.
-     * pegCount is clamped to [1, totalValidCells - 1] so there is always at
-     * least one hole on the board.
-     */
     public void randomize(int pegCount) {
         // Collect all valid cell coordinates
         java.util.List<int[]> validCells = new java.util.ArrayList<>();
@@ -136,7 +129,7 @@ public class Board {
         int total = validCells.size();
         pegCount = Math.max(1, Math.min(pegCount, total - 1));
 
-        // Shuffle and assign: first pegCount cells get a peg, the rest get a hole
+        // Shuffle and assign. First pegCount cells get a peg, the rest get a hole
         java.util.Collections.shuffle(validCells);
         for (int i = 0; i < total; i++)
             grid[validCells.get(i)[0]][validCells.get(i)[1]] = (i < pegCount) ? 1 : 0;
